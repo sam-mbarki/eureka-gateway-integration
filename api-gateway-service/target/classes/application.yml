@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+eureka:
+  server:
+    enableSelfPreservation: false
+  client:
+    healthCheck:
+      enabled: true
+    service-url:
+      defaultZone: 'http://localhost:8761/eureka/'
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
+    heartbeat-interval: 10
+    instance-info-replication-interval-seconds: 30
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: api-gateway-service
+    appname: api-gateway-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health, info'

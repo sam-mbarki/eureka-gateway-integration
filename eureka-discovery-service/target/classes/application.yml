@@ -1,0 +1,21 @@
+server:
+  port: 8761 # Default port for Eureka Server
+  ui-context-url: /eureka/
+spring:
+  application:
+    name: eureka-discovery-service
+
+eureka:
+  client:
+    register-with-eureka: false # The server should not register itself
+    fetch-registry: false       # The server does not fetch the registry
+    # Interval for instance renewal
+    renewalIntervalInSecs: 30  # Interval in seconds
+    # The time before Eureka removes an instance if no heartbeat renewal occurs
+    evictionIntervalTimerInMs: 60000  # Time in milliseconds for eviction checks
+    # The threshold for renewing the status of the instance
+    registryFetchIntervalSeconds: 30  # Time interval to fetch the registry from Eureka
+    # Enable or disable self-preservation mode
+    enable-self-preservation: true  # Disable self-preservation for testing
+
+
